@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youruikang.mapper.ShopDao">
+	
+	<select id="queryRoomList" resultType="com.youruikang.entity.Room">
+		 select r.*,GROUP_CONCAT(s.sname) sname FROM room r,shop s,room_shop z 
+		 <where>
+		 	z.rid=r.rid and s.sid=z.sid GROUP BY z.rid
+		 </where>
+	</select>
+	
+	<select id="queryShopList" resultType="com.youruikang.entity.Shop">
+		select * from shop
+	</select>
+	
+</mapper>
