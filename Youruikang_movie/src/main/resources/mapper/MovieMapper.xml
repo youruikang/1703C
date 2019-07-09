@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bw.mapper.MovieMapperDao">
+	<select id="selectList" resultType="map" parameterType="map">
+		select * from movie 
+		<where>
+			<if test="mname != ''">
+				and mname like '%${mname}%'
+			</if>
+			<if test="dname != ''">
+				and dname like '%${dname}%'
+			</if>
+			<if test="year != 0">
+				and year = #{year}
+			</if>
+			<if test="dlow != ''">
+				and datea > #{dlow}
+			</if>
+			<if test="dhigh != ''">
+				and datea &lt; #{dhigh}
+			</if>
+			<if test="plow != ''">
+				and price > #{plow}
+			</if>
+			<if test="phigh != ''">
+				and price &lt; #{phigh}
+			</if>
+			<if test="hlow != ''">
+				and hours > #{hlow}
+			</if>
+			<if test="hhigh != ''">
+				and hours &lt; #{hhigh}
+			</if>
+		</where>
+		<if test="dorder != ''">
+			order by datea ${dorder}
+		</if>
+		<if test="yorder != ''">
+			order by year ${yorder}
+		</if>
+		<if test="horder != ''">
+			order by hours ${horder}
+		</if>
+	</select>
+	
+	<update id="updateStatus" parameterType="map">
+		update movie set status = #{status} where mid = #{mid}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from movie where mid in (${value})
+	</delete>
+</mapper>
