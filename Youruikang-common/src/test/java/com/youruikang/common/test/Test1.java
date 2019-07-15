@@ -7,22 +7,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Test;
 
 import com.youruikang.common.utils.AssertUtil;
 import com.youruikang.common.utils.Runtime;
 
 //测试类
-public class Test {
+public class Test1 {
 		
-		//真
+		@Test
 		public void isTrue() {
 			try {
-				AssertUtil.isTrue(false, "这不是true");
+				AssertUtil.isTrue(true, "这不是true");
 			} catch (Runtime e) {
 				e.printStackTrace();
 			}
 		}
 		//假
+		@Test
 		public void isFalse() {
 			try {
 				AssertUtil.isFalse(true, "这不是false");
