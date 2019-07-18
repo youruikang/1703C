@@ -92,5 +92,15 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@RequestMapping("/article")
+	public String show(Integer id) {
+		
+		articleService.increaseHit(id);
+		
+		return "blog";
+	}
+	
+	
 
 }

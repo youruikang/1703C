@@ -28,6 +28,11 @@ public interface ArticleService {
 	 * List<Article>
 	 */
 	public abstract List<Article> gets(Article conditions, Page page, LinkedHashMap<String, Boolean> orders);
+
+	/**
+	 * @param id
+	 */
+	public abstract void increaseHit(Integer id);
 	
 
 }

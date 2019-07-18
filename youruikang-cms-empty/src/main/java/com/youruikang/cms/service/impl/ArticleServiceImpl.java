@@ -43,6 +43,14 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		return articles;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.ArticleService#showById(java.lang.Integer)
+	 */
+	@Override
+	public void increaseHit(Integer id) {
+		articleMapper.increaseHit(id);
+	}
 	
 	
 }
