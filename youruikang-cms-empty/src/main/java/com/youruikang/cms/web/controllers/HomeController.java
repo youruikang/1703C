@@ -94,9 +94,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/article")
-	public String show(Integer id) {
+	public String show(Integer id,Model model) {
 		
 		articleService.increaseHit(id);
+		
+		Article article = articleService.selectByPrimaryKey(id);
+		
+		model.addAttribute("blog", article);
 		
 		return "blog";
 	}

@@ -51,6 +51,14 @@ public class ArticleServiceImpl implements ArticleService {
 	public void increaseHit(Integer id) {
 		articleMapper.increaseHit(id);
 	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.ArticleService#selectByPrimaryKey(java.lang.Integer)
+	 */
+	@Override
+	public Article selectByPrimaryKey(Integer id) {
+		return articleMapper.selectByPrimaryKey(id);
+	}
 	
 	
 }

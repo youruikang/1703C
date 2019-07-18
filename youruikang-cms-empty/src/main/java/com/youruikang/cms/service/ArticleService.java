@@ -33,6 +33,12 @@ public interface ArticleService {
 	 * @param id
 	 */
 	public abstract void increaseHit(Integer id);
+
+	/**
+	 * @param id
+	 * @return 
+	 */
+	public abstract Article selectByPrimaryKey(Integer id);
 	
 
 }

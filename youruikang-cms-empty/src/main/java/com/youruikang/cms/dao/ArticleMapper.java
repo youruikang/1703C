@@ -54,4 +54,11 @@ public interface ArticleMapper {
 	 */
 	public int count(@Param("article") Article article);
 
+
+	/**
+	 * @param id
+	 * @return 
+	 */
+	public Article selectByPrimaryKey(Integer id);
+
 }
