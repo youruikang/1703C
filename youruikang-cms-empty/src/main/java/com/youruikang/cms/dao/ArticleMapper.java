@@ -61,4 +61,24 @@ public interface ArticleMapper {
 	 */
 	public Article selectByPrimaryKey(Integer id);
 
+
+	/**
+	 * @param article
+	 * @return 
+	 */
+	public List<Article> queryAll(@Param("article")Article article);
+
+
+	/**
+	 * @param article
+	 */
+	public void updateByKey(Article article);
+
+
+	/**
+	 * @param id
+	 * @return 
+	 */
+	public Integer delete(Integer id);
+
 }

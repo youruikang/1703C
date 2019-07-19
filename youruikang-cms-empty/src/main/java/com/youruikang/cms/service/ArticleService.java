@@ -39,6 +39,28 @@ public interface ArticleService {
 	 * @return 
 	 */
 	public abstract Article selectByPrimaryKey(Integer id);
+
+	/**
+	 * @param article
+	 * @return
+	 */
+	public abstract List<Article> queryAll(Article article);
+
+	/**
+	 * @param article
+	 */
+	public abstract void updateByKey(Article article);
+
+	/**
+	 * @param article
+	 */
+	public abstract void save(Article article);
+
+	/**
+	 * @param id
+	 * @return 
+	 */
+	public abstract boolean remove(Integer id);
 	
 
 }

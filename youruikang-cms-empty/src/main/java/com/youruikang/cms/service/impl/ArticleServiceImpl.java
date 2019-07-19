@@ -59,6 +59,42 @@ public class ArticleServiceImpl implements ArticleService {
 	public Article selectByPrimaryKey(Integer id) {
 		return articleMapper.selectByPrimaryKey(id);
 	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.ArticleService#queryAll(com.youruikang.cms.domain.Article)
+	 */
+	@Override
+	public List<Article> queryAll(Article article) {
+		return articleMapper.queryAll(article);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.ArticleService#updateByKey(com.youruikang.cms.domain.Article)
+	 */
+	@Override
+	public void updateByKey(Article article) {
+		articleMapper.updateByKey(article);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.ArticleService#save(com.youruikang.cms.domain.Article)
+	 */
+	@Override
+	public void save(Article article) {
+		articleMapper.save(article);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.ArticleService#remove(java.lang.Integer)
+	 */
+	@Override
+	public boolean remove(Integer id) {
+		Integer integer = articleMapper.delete(id);
+		if(integer>0) {
+			return true;
+		}
+		return false;
+	}
 	
 	
 }

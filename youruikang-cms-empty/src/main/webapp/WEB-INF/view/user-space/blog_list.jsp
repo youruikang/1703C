@@ -82,11 +82,13 @@
 					url:'/my/blog/remove?id=' + id,
 					type:'get',
 					success:function(data){
-						/* if(data.status){
-							$("#item_" + id).remove();
+						if(data){
+							alert("删除成功");
+							location.href="/my/blogs";
 						}else{
-							alert(data.message);
-						} */
+							alert("删除失败");
+							location.href="/my/blogs";
+						}
 					}
 				});
 			}
