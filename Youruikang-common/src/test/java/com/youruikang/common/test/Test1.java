@@ -18,7 +18,7 @@ public class Test1 {
 		@Test
 		public void isTrue() {
 			try {
-				AssertUtil.isTrue(true, "这不是true");
+				AssertUtil.isTrue(false, "这不是true");
 			} catch (Runtime e) {
 				e.printStackTrace();
 			}
