@@ -6,7 +6,10 @@ package com.youruikang.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.swing.tree.DefaultTreeCellEditor.EditorContainer;
 
+import org.aspectj.bridge.Message;
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.youruikang.common.utils.AssertUtil;
+import com.youruikang.common.utils.Runtime;
 import com.youruikang.entity.Room;
 import com.youruikang.entity.Shop;
 import com.youruikang.service.ShopService;
@@ -36,9 +41,14 @@ public class ShopController {
 		model.addAttribute("rlist", rlist);
 		return "list";
 	}
-	
-	
-	
-	
-	
+	@Test
+	public void istrue() {
+		String username = "";
+		try {
+			AssertUtil.isNull("username", "用户名为空");
+		} catch (Runtime e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 }
