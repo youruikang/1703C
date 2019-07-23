@@ -62,6 +62,14 @@
 				    		<span class="red"></span>
 				    	</p>
 				    	<p>
+				    		<input name="keywords" value="${blog.keywords}" class="form-control" placeholder="关键字"/>
+				    		<span class="red"></span>
+				    	</p>
+				    	<p>
+				    		<input name="orglink" value="${blog.orglink}" class="form-control" placeholder="原文链接"/>
+				    		<span class="red"></span>
+				    	</p>
+				    	<p>
 				    		<textarea name="content" rows="30"  class="form-control" placeholder="摘要">${blog.content }</textarea>
 				    		<span class="red"></span>
 				    	</p>

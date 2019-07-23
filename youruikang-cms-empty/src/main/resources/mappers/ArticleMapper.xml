@@ -24,6 +24,8 @@
     
     <result column="category_id" property="category.id" jdbcType="INTEGER"/>
     <result column="category_name" property="category.name" jdbcType="VARCHAR"/>
+    <result column="keywords" property="keywords" jdbcType="VARCHAR"/>
+    <result column="orglink" property="orglink" jdbcType="VARCHAR"/>
     
     <!-- 多对一查询自动映射实体 
     <association property="channel">
@@ -120,8 +122,13 @@
       <if test="content != null">
         content,
       </if>
+       <if test="keywords != null">
+        keywords,
+      </if>
+      <if test="orglink != null">
+        orglink,
+      </if>
     </trim>
- 
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
@@ -154,20 +161,26 @@
         #{deleted,jdbcType=BIT},
       </if>
       <if test="created != null">
-        #{created,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updated != null">
-        #{updated,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="content != null">
         #{content,jdbcType=CLOB},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+       <if test="orglink != null">
+        #{orglink,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <!-- 根据主键查询 -->
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 	SELECT 
-		b.id, b.title, b.picture, b.summary, b.content, b.channel_id, b.category_id, b.user_id, b.hits, b.hot, b.created, b.updated, 
+		b.id, b.title,b.keywords,b.orglink, b.picture, b.summary, b.content, b.channel_id, b.category_id, b.user_id, b.hits, b.hot, b.created, b.updated, 
 		u.id as author_id,
 		u.nickname as author_nickname,
 		ch.id as channel_id,
@@ -234,7 +247,7 @@
   
   <select id="queryAll" parameterType="article" resultType="article">
 	SELECT 
-		b.id, b.title, b.picture, b.summary, b.channel_id, b.category_id, b.user_id, b.hits, b.hot,b.status,b.deleted, b.created, b.updated, 
+		b.id, b.title,b.keywords,b.orglink, b.picture, b.summary, b.channel_id, b.category_id, b.user_id, b.hits, b.hot,b.status,b.deleted, b.created, b.updated, 
 		u.id as author_id,
 		u.nickname as author_nickname,
 		ch.id as channel_id,
@@ -345,6 +358,12 @@
 		  <if test="title != null">
 	       title = #{title,jdbcType=VARCHAR},
 	      </if>
+	      <if test="keywords != null">
+	       keywords = #{keywords,jdbcType=VARCHAR},
+	      </if>
+	      <if test="orglink != null">
+	       orglink = #{orglink,jdbcType=VARCHAR},
+	      </if>
 	      <if test="summary != null">
 	       summary = #{summary,jdbcType=VARCHAR},
 	      </if>
@@ -360,12 +379,13 @@
 	      <if test="hits != null">
 	       hits =#{hits,jdbcType=INTEGER},
 	      </if>
-	      <if test="updated != null">
-	       updated = #{updated,jdbcType=TIMESTAMP},
-	      </if>
+	      <!-- <if test="updated != null">
+	       updated = now(),
+	      </if> -->
 	      <if test="content != null">
 	       content = #{content,jdbcType=CLOB},
 	      </if>
+	      updated = now(),
 		</set>
 		<where>
 			id = #{id,jdbcType=INTEGER}
@@ -375,6 +395,26 @@
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete from cms_article where id = #{0}
 	</delete>
+
+	<select id="showMyComments" parameterType="java.lang.Integer" resultType="com.youruikang.cms.domain.Comment">
+		select * from cms_comment where user_id=#{0}
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.youruikang.cms.core.Page;
 import com.youruikang.cms.domain.Article;
+import com.youruikang.cms.domain.Comment;
 import com.youruikang.cms.domain.User;
 
 /**
@@ -61,6 +62,12 @@ public interface ArticleService {
 	 * @return 
 	 */
 	public abstract boolean remove(Integer id);
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public abstract List<Comment> showMyComments(Integer id);
 	
 
 }

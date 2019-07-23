@@ -26,8 +26,10 @@ import com.youruikang.cms.core.Page;
 import com.youruikang.cms.domain.Article;
 import com.youruikang.cms.domain.Category;
 import com.youruikang.cms.domain.Channel;
+import com.youruikang.cms.domain.Comment;
 import com.youruikang.cms.domain.User;
 import com.youruikang.cms.service.ArticleService;
+import com.youruikang.cms.service.CommentService;
 import com.youruikang.cms.service.UserService;
 import com.youruikang.cms.utils.FileUploadUtil;
 import com.youruikang.cms.utils.PageHelpUtil;
@@ -61,6 +63,14 @@ public class UserController {
 		return "redirect:/my/userinfo";
 	}
 
+	@RequestMapping({"comments"})
+	public String comments() {
+		return "redirect:/my/mycomments";
+	}
+	
+	
+	
+	//文章列表
 	@RequestMapping("/blogs")
 	public String blogs(Model model,HttpSession session,
 			@RequestParam(value="page",defaultValue="1")Integer page) {
@@ -85,6 +95,7 @@ public class UserController {
 		return "user-space/blog_list";
 	}
 
+	//修改文章
 	@RequestMapping("/blog/edit")
 	public String edit(Integer id,Model model) {
 		
@@ -125,6 +136,7 @@ public class UserController {
 		return "redirect:/my/blogs";
 	}
 	
+	//删除文章
 	@RequestMapping("/blog/remove")
 	@ResponseBody
 	public boolean remove(Integer id) {
@@ -133,12 +145,14 @@ public class UserController {
 		return b;
 	}
 	
+	//修改个人信息
 	@RequestMapping("/updated")
 	public String update(User user) {
 		userService.updateById(user);
 		return "redirect:/my/userinfo";
 	}
 	
+	//修改个人信息
 	@RequestMapping("/userinfo")
 	public String userinfo(HttpServletRequest request,Model model) {
 		HttpSession session = request.getSession();
@@ -147,5 +161,28 @@ public class UserController {
 		model.addAttribute("user", u);
 		return "user-space/userdit";
 	}
+	
+	@RequestMapping("/mycomments")
+	public String showMyComments(HttpSession session,Model model) {
+		User user = (User) session.getAttribute(Constant.LOGIN_USER);
+		Integer id = user.getId();
+		List<Comment> comments = articleService.showMyComments(id);
+		model.addAttribute("comment", comments);
+		return "user-space/comments";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

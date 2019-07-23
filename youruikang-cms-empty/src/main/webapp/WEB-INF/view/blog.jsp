@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>豪哥博客</title>
+    <title>我的博客</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.min.css"/>
@@ -48,7 +48,13 @@
 					浏览：${blog.hits}
 					<input type="hidden" id="articleId" value="${blog.id }"
 					<!--btn-success  -->
-					 <a id="mir" class="btn btn-success" href="javascript:void(0)" style="color:#000;">
+					<br>
+					<a id="mir" class="btn btn-success" href="${blog.orglink }" >
+        				<span id="sctxt">
+        					原文链接${blog.orglink }
+        				</span><i class="glyphicon glyphicon-align-left"></i>
+    				 </a>
+					 <a id="mir" class="btn btn-success" href="javascript:void(0)">
         				<span id="sctxt">收藏</span><i class="glyphicon glyphicon-align-left"></i>
     				 </a>
 				</div>
@@ -66,7 +72,7 @@
 						<div class="media">
 						  <div class="media-left">
 						    <a href="#">
-						      <img class="media-object" src="/images/default_avatar.png" style="max-height: 50px" alt="...">
+						      <img class="media-object" src="/images/avatar1.jpg" style="max-height: 50px" alt="...">
 						    </a>
 						  </div>
 						  <div class="media-body">

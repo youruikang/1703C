@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.youruikang.cms.core.Page;
 import com.youruikang.cms.dao.ArticleMapper;
 import com.youruikang.cms.domain.Article;
+import com.youruikang.cms.domain.Comment;
 import com.youruikang.cms.service.ArticleService;
 
 /**
@@ -94,6 +96,14 @@ public class ArticleServiceImpl implements ArticleService {
 			return true;
 		}
 		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.ArticleService#showMyComments(java.lang.Integer)
+	 */
+	@Override
+	public List<Comment> showMyComments(Integer id) {
+		return articleMapper.showMyComments(id);
 	}
 	
 	

@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.youruikang.cms.core.Page;
 import com.youruikang.cms.domain.Article;
+import com.youruikang.cms.domain.Comment;
 
 
 /**
@@ -80,5 +81,12 @@ public interface ArticleMapper {
 	 * @return 
 	 */
 	public Integer delete(Integer id);
+
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public List<Comment> showMyComments(Integer id);
 
 }
