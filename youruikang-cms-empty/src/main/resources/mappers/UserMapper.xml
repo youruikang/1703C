@@ -94,5 +94,7 @@
       </if>
     </trim>
   </insert>
-  
+  <update id="updateById" parameterType="com.youruikang.cms.domain.User">
+  	update cms_user set nickname=#{nickname}
+  </update>
 </mapper>

@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-<title>我的个人空间</title>
+<title>个人设置</title>
 
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css"
@@ -40,6 +40,31 @@
 			<div class="col-md-3">
 				<jsp:include page="/WEB-INF/inc/my_left.jsp"><jsp:param
 						value="profile" name="module" /></jsp:include>
+			</div>
+			<div class="col-md-9">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="container">
+							<div class="row clearfix">
+								<div class="col-md-12 column">
+									<form role="form" action="/my/updated" method="post">
+										<input type = "hidden" name="id" value="${user.id}">
+										<div class="form-group">
+											<label for="username">用户名</label><input
+												type="text" class="form-control" id="username" name="username" placeholder="用户名" value="${user.username}" readonly="readonly" />
+										</div>
+										
+										<div class="form-group">
+											<label for="nickname">昵称</label><input
+												type="text" class="form-control" id="nickname" name="nickname" placeholder="昵称" value="${user.nickname}" />
+										</div>
+										<button type="submit" class="btn btn-default">保存</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -46,5 +46,21 @@ public class UserServiceImpl implements UserService {
 		return userMapper.count(conditions);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.UserService#selectById(java.lang.Integer)
+	 */
+	@Override
+	public User selectById(Integer id) {
+		return userMapper.selectById(id);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.youruikang.cms.service.UserService#updateById(com.youruikang.cms.domain.User)
+	 */
+	@Override
+	public void updateById(User user) {
+		userMapper.updateById(user);
+	}
+
 	
 }

@@ -39,5 +39,7 @@
     <url-pattern>/js/*</url-pattern>
     <url-pattern>/css/*</url-pattern>
     <url-pattern>/libs/*</url-pattern>
+    <url-pattern>/update/*</url-pattern>
+    <url-pattern>/profile/*</url-pattern>
   </servlet-mapping>
 </web-app>

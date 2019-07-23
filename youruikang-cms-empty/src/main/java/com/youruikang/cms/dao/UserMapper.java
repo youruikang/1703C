@@ -24,5 +24,11 @@ public interface UserMapper {
 	public User selectByUsername(String username);
 
 	public int count(User user);
+
+	/**
+	 * @param user
+	 * @return
+	 */
+	public void updateById(User user);
 	
 }

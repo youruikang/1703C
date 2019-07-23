@@ -28,6 +28,7 @@ import com.youruikang.cms.domain.Category;
 import com.youruikang.cms.domain.Channel;
 import com.youruikang.cms.domain.User;
 import com.youruikang.cms.service.ArticleService;
+import com.youruikang.cms.service.UserService;
 import com.youruikang.cms.utils.FileUploadUtil;
 import com.youruikang.cms.utils.PageHelpUtil;
 import com.youruikang.cms.web.Constant;
@@ -47,14 +48,17 @@ public class UserController {
 	@Autowired
 	ArticleService articleService;
 	
+	@Autowired
+	UserService userService;
+	
 	@RequestMapping({"/", "/index", "/home"})
 	public String home(){
 		return "user-space/home";
 	}
 	
-	@RequestMapping({"/profile"})
+	@RequestMapping({"/userdit"})
 	public String profile(){
-		return "user-space/profile";
+		return "redirect:/my/userinfo";
 	}
 
 	@RequestMapping("/blogs")
@@ -129,5 +133,19 @@ public class UserController {
 		return b;
 	}
 	
+	@RequestMapping("/updated")
+	public String update(User user) {
+		userService.updateById(user);
+		return "redirect:/my/userinfo";
+	}
+	
+	@RequestMapping("/userinfo")
+	public String userinfo(HttpServletRequest request,Model model) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(Constant.LOGIN_USER);
+		User u = userService.selectById(user.getId());
+		model.addAttribute("user", u);
+		return "user-space/userdit";
+	}
 	
 }
