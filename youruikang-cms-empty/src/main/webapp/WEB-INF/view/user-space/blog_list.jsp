@@ -66,7 +66,10 @@
 				    		</c:forEach>
 				    		</tbody>
 				    	</table>
-				    	${pageList}
+				    		<a href = "/my/blogs/?pageNum=${page.firstPage}">首页</a>
+				    		<a href = "/my/blogs/?pageNum=${page.prePage}">上一页</a>
+				    		<a href = "/my/blogs/?pageNum=${page.nextPage}">下一页</a>
+				    		<a href = "/my/blogs/?pageNum=${page.lastPage}">尾页</a>
 				  </div>
 				</div>
 			</div>
